@@ -12,6 +12,7 @@ class Song extends Component {
 
         <p className="sing-intro">
         Create singing groups and create fun, and unique sing-alongs with friends!
+          <p><button>Record</button></p>
         </p>
       </div>
     );
