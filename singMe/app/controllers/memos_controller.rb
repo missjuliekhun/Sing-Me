@@ -2,6 +2,7 @@ class MemosController < ApplicationController
   def new
   end
 
+#CREATE ACTION
   def create
     @memo = Memo.new(params.require(:memo).permit(:title, :text))
   end
@@ -12,11 +13,20 @@ class MemosController < ApplicationController
     redirect_to @memo
   end
 
+  #SHOW ACTION
+    def show
+      @memo = Memo.find(params[:id])
+    end
+
+    def new
+    end
+
+
+
+  end
+
+
 private
   def memo_params
       params.require(:memo).permit(:title, :text)
   end
-
-
-
-end
