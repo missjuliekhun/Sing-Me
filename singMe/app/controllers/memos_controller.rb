@@ -1,6 +1,16 @@
 class MemosController < ApplicationController
+#SHOW ACTION
+  def index
+    @memos = Memo.all
+  end
+
+  def show
+    @memo = Memo.find(params[:id])
+  end
+
   def new
   end
+
 
 #CREATE ACTION
   def create
@@ -13,18 +23,8 @@ class MemosController < ApplicationController
     redirect_to @memo
   end
 
-  #SHOW ACTION
-    def show
-      @memo = Memo.find(params[:id])
-    end
-
-    def new
-    end
-
-
 
   end
-
 
 private
   def memo_params
