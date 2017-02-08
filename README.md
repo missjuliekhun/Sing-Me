@@ -2,8 +2,7 @@
 With the Sing Me app you will be able to record your voice and get feedback from other singers.
 
 ##Technologies
--REACT (View)
--RAILS (Functionality)
+-RAILS (MVC)
 -CSS (Styles)
 -BootStrap (Styles)
 
@@ -12,3 +11,8 @@ https://www.draw.io/?state=%7B%22folderId%22:%220AEdFOJ_mFtYnUk9PVA%22,%22action
 
 Link to Trello:
 https://trello.com/b/S878jzsx/sing-for-me
+
+
+##Monday and Tuesday, and now Today 
+Looked and followed a walk-through on React on Rails, but now I am going to go all out of Rails! 
+
