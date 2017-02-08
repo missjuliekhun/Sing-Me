@@ -1,0 +1,2 @@
+module SingHelper
+end
