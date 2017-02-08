@@ -1,0 +1,16 @@
+<h1>Listing Memos</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @memos.each do |memo| %>
+    <tr>
+      <td><%= memo.title %></td>
+      <td><%= memo.text %></td>
+      <td><%= link_to 'Show', memo_path(memo) %></td>
+    </tr>
+  <% end %>
+</table>
