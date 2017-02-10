@@ -19,12 +19,18 @@ class MemosController < ApplicationController
 
   def create
     @memo = Memo.new(memo_params)
+    if @memo.save
+        redirect_to @memo
+      else
+        render 'new'
+      end
+    end
+
     @memo.save
     redirect_to @memo
   end
 
 
-  end
 
 private
   def memo_params

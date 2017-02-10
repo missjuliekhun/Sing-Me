@@ -13,3 +13,10 @@
     <%= f.submit %></p>
 
 <% end %>
+
+
+<!-- This is going to allow us to go back to the index action -->
+<%= form_for :memo, url: memos_path do |f| %>
+<% end %>
+
+<%= link_to 'BACK', memos_path %>
