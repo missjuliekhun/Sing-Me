@@ -37,6 +37,12 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
+
+  # This will allow emails to be sent to each individual user but since this is not
+  # Live yet, emails will go to terminal
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
