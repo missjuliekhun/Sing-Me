@@ -21,14 +21,18 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     if @memo.save
         redirect_to @memo
-      else
-        render 'new'
-      end
+      # else
+      #   render 'new'
+      # end
+      # This else render function is not working, possibly due to no functions in
+      # My new method above
     end
+
 
     @memo.save
     redirect_to @memo
   end
+end
 
 
 
