@@ -21,6 +21,7 @@ class MemosController < ApplicationController
     @memo = Memo.new(memo_params)
     if @memo.save
         redirect_to @memo
+          return @memo
       # else
       #   render 'new'
       # end
@@ -29,8 +30,8 @@ class MemosController < ApplicationController
     end
 
 
-    @memo.save
-    redirect_to @memo
+  #   @memo.save
+  #   redirect_to @memo
   end
 end
 
