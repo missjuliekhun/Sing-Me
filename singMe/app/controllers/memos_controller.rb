@@ -11,6 +11,10 @@ class MemosController < ApplicationController
   def new
   end
 
+  def edit
+  @memo = Memo.find(params[:id])
+end
+
 
 #CREATE ACTION
   def create
@@ -32,6 +36,14 @@ class MemosController < ApplicationController
 
   #   @memo.save
   #   redirect_to @memo
+
+  def destroy
+    @memo.destroy
+    respond_to do |format|
+      format.html { redirect_to articles_url, notice: 'Memo deleted.' }
+      format.json { head :no_content }
+    end
+  end
   end
 end
 
