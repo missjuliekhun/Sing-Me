@@ -1,7 +1,8 @@
-<!-- <h1>Sing Me</h1>
+<h1>Sing Me</h1>
 
 <h1>Record Your Voice</h1>
-<%= link_to 'My Memos', controller: 'memos' %> -->
+<%= link_to 'My Memos', controller: 'memos' %>
+
 
 <%= stylesheet_link_tag    'sing', media: 'all', 'data-turbolinks-track': 'reload' %>
 
@@ -41,16 +42,20 @@
                     <p>Give it a go!</p>
                     <!-- This is my recording button -->
 
-
-
-
-
+                    <div id="viz">
+                    		<canvas id="analyser" width="1024" height="500"></canvas>
+                    		<canvas id="wavedisplay" width="1024" height="500"></canvas>
+                    	</div>
+                    	<div id="controls">
+                    		<img id="record" src="img/mic128.png" onclick="toggleRecording(this);">
+                    		<a id="save" href="#"><img src="img/save.svg"></a>
+                    	</div>
 
 
 
 
                     <!-- Recording button ends here -->
-                    <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
+                    // <a href="http://startbootstrap.com/template-overviews/grayscale/" class="btn btn-default btn-lg">Visit Download Page</a>
                 </div>
             </div>
         </div>

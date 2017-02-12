@@ -1,9 +1,11 @@
-<h1>Listing Memos</h1>
+<h1>Listing My Memos</h1>
 <%= link_to 'New Memo', new_memo_path %>
 <table>
   <tr>
     <th>Title</th>
     <th>Text</th>
+    <th colspan="2"></th>
+
   </tr>
 
   <% @memos.each do |memo| %>
@@ -11,6 +13,9 @@
       <td><%= memo.title %></td>
       <td><%= memo.text %></td>
       <td><%= link_to 'Show', memo_path(memo) %></td>
+      <td><%= link_to 'Edit', edit_memo_path(memo) %></td>
     </tr>
+
+
   <% end %>
 </table>
