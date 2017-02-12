@@ -3,6 +3,14 @@
   <head>
     <title>SingMe</title>
     <%= csrf_meta_tags %>
+    <!-- Bootstrap Core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/css/grayscale.css" rel="stylesheet"> -->
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -17,9 +25,9 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="nzvbar-brand page-scroll" href="#page-top">
+                <!-- <a class="nzvbar-brand page-scroll" href="#page-top">
                     <i class="fa fa-play-circle"></i> <span class="light">Start</span> Bootstrap
-                </a>
+                </a> -->
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -63,6 +71,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
+<!-- The yield is going to be each of out pages-->
     <%= yield %>
     <!-- Footer -->
     <footer>
