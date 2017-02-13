@@ -3,21 +3,17 @@
   <head>
     <title>SingMe</title>
     <%= csrf_meta_tags %>
-    <link href="https://blackrockdigital.github.io/startbootstrap-one-page-wonder/css/one-page-wonder.css" rel="stylesheet">
-
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <!-- Bootstrap Core CSS -->
-  <!-- <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <!-- <link href="https://blackrockdigital.github.io/startbootstrap-grayscale/css/grayscale.css" rel="stylesheet"> -->
 
-
-
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -42,7 +38,7 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                      <%= link_to 'Home', sing_index_url %>
                     </li>
                     <li>
                         <a class="page-scroll" href="#download">Download</a>
@@ -75,7 +71,7 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-<!-- The yield is going to be each of our pages-->
+<!-- The yield is going to be each of out pages-->
     <%= yield %>
     <!-- Footer -->
     <footer>
