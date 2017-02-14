@@ -2,7 +2,7 @@
 With the Sing Me app you will be able to record your voice and get feedback from other singers.
 
 ##Technologies
--RAILS (MVC)
+-RUBY on RAILS (MVC)
 -CSS (Styles)
 -BootStrap (Styles)
 
