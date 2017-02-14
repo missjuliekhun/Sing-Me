@@ -1,5 +1,5 @@
 class SingController < ApplicationController
-  def index
+  def buttons
   end
 
 end

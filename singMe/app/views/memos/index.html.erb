@@ -1,9 +1,12 @@
-<h1>Listing My Memos</h1>
-<%= link_to 'New Memo', new_memo_path %>
+<h1>MY SONGS</h1>
+<div class="btn-group">
+<%= link_to 'Add Commentary', new_memo_path, :class => "btn" %>
+</div>
 <table>
   <tr>
+    <br>
     <th>Title</th>
-    <th>Text</th>
+    <u><th>Commentary</th></u>
     <th colspan="2"></th>
 
   </tr>
@@ -12,8 +15,13 @@
     <tr>
       <td><%= memo.title %></td>
       <td><%= memo.text %></td>
-      <td><%= link_to 'Show', memo_path(memo) %></td>
-      <td><%= link_to 'Edit', edit_memo_path(memo) %></td>
+  <div class="btn-group">
+      <td><%= link_to 'View', memo_path(memo), :class => "btn" %></td>
+      <td><%= link_to 'Edit', edit_memo_path(memo), :class => "btn" %></td>
+      <td><%= link_to 'Delete', memo_path(memo),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+  </div>
     </tr>
 
 

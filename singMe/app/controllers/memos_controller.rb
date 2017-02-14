@@ -45,15 +45,23 @@ class MemosController < ApplicationController
 
   #   @memo.save
   #   redirect_to @memo
-
   def destroy
-    @memo.destroy
-    respond_to do |format|
-      format.html { redirect_to memos_url, notice: 'Memo deleted.' }
-      format.json { head :no_content }
+      @memo = Memo.find(params[:id])
+      @memo.destroy
+
+      redirect_to memos_path
     end
   end
-  end
+
+
+  # def destroy
+  #   @memo.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to memos_url, notice: 'Memo deleted.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
+  # end
 
 
 

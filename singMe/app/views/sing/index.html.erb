@@ -1,7 +1,7 @@
 <!-- <%= link_to 'My Memos', controller: 'memos' %> -->
 <%= stylesheet_link_tag    'sing', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-<!-- Navigation -->
+<!-- NAVIGATION -->
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -35,45 +35,114 @@
 
   <!-- Full Width Image Header -->
     <header class="header-image">
+      <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
         <div class="headline">
             <div class="container">
-                <h1>SING ME</h1>
+                <h1 class="sing">SING ME</h1>
                 <h2>Record Your Voice</h2>
             </div>
         </div>
     </header>
 
-    <!-- Page Content -->
+    <!-- PAGE CONTENT -->
     <div class="container">
-
         <hr class="featurette-divider">
-
          Record something unique, with your friends and add your own commentary.
-        <div class="featurette" id="about">
-            <img class="featurette-image img-circle img-responsive pull-right" src="http://www.clker.com/cliparts/d/b/c/f/13652249372108434179Record Button Microphone.svg.thumb.png">
-            <h2 class="featurette-heading">You Start The Song
-                <span class="text-muted">Others Will Help You Finish</span>
-            </h2>
-            <p class="lead">Use that app as a fun way to mash up and sing-a-long.</p>
-        </div>
-
+    <div class="featurette" id="about">
+      <!-- RECORD BUTTON -->
+        <img class="featurette-image img-circle img-responsive pull-right" src="http://www.clker.com/cliparts/f/t/B/8/8/8/recodring-md.png">
+        <h2 class="featurette-heading">You Start The Song
+            <span class="text-muted">Others Will Help You Finish</span>
+        </h2>
+        <p class="lead">A fun way to mash up and sing-a-long.</p>
+    </div>
         <hr class="featurette-divider">
 
-    <!--  USE THIS SECTION FOR SOMETHING ELSE
-    <section id="download" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Download Grayscale</h2>
-                    <p>Give it a go!</p> -->
 
-    <!-- This is my recording button -->
-    <div id="viz">
-    		<canvas id="analyser" width="1024" height="500"></canvas>
-    		<canvas id="wavedisplay" width="1024" height="500"></canvas>
-    	</div>
-    	<div id="controls">
-    		<img id="record" src="img/mic128.png" onclick="toggleRecording(this);">
-    		<a id="save" href="#"><img src="img/save.svg"></a>
-    	</div>
-    <!-- Recording button ends here -->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//connect.soundcloud.com/sdk.js"></script>
+<script>
+  SC.initialize({
+    client_id: "c202b469a633a7a5b15c9e10b5272b78",
+    redirect_uri: "http://connect.soundcloud.com/examples/callback.html"
+  });
+
+  $("#recorderUI.reset #controlButton").live("click", function(e){
+    updateTimer(0);
+    SC.record({
+      start: function(){
+        setRecorderUIState("recording");
+      },
+      progress: function(ms, avgPeak){
+        updateTimer(ms);
+      }
+    });
+    e.preventDefault();
+  });
+
+  $("#recorderUI.recording #controlButton, #recorderUI.playing #controlButton").live("click", function(e){
+    setRecorderUIState("recorded");
+    SC.recordStop();
+    e.preventDefault();
+  });
+
+  $("#recorderUI.recorded #controlButton").live("click", function(e){
+    updateTimer(0);
+    setRecorderUIState("playing");
+    SC.recordPlay({
+      progress: function(ms){
+        updateTimer(ms);
+      },
+      finished: function(){
+        setRecorderUIState("recorded");
+      }
+    });
+    e.preventDefault();
+  });
+
+  $("#reset").live("click", function(e){
+    SC.recordStop();
+    setRecorderUIState("reset");
+    e.preventDefault();
+  });
+
+  $("#upload").live("click", function(e){
+    setRecorderUIState("uploading");
+
+    SC.connect({
+      connected: function(){
+        $("#uploadStatus").html("Uploading...");
+        SC.recordUpload({
+          track: {
+            title: "Untitled Recording",
+            sharing: "private"
+          }
+        }, function(track){
+          $("#uploadStatus").html("Uploaded: <a href='" + track.permalink_url + "'>" + track.permalink_url + "</a>");
+        });
+      }
+    });
+
+    e.preventDefault();
+  });
+
+  function updateTimer(ms){
+    $("#timer").text(SC.Helper.millisecondsToHMS(ms));
+  }
+
+  function setRecorderUIState(state){
+    // state can be reset, recording, recorded, playing, uploading
+    // visibility of buttons is managed via CSS
+    $("#recorderUI").attr("class", state);
+  }
+</script>
+
+<div id="recorderUI" class="reset">
+  <a href="#" id="controlButton" class="record"><span id="timer" class="hidden">0:00</span></a>
+  <div id="otherControls">
+    <a href="#" id="reset" class="button">Reset</a>
+    <a href="#" id="upload" class="button">Upload</a>
+  </div>
+  <div id="uploadStatus"></div>
+</div>
